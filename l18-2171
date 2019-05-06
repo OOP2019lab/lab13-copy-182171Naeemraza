@@ -1,0 +1,129 @@
+#include<iostream>
+#include<stdio.h>
+using namespace std;
+//template<typename T>
+                                            //Exercise 1
+//T GetMax(T a,T b)
+//{
+//	if(a>b)
+//		return a;
+//	else 
+//		return b;
+//}
+//template <typename a>
+//a GetMin(a a1,a a2)
+//{
+//	if(a1<a2)
+//		return a1;
+//	else
+//		return a2;
+//}
+                                              //Exeercise 2
+//template<typename T1,typename T2>
+//T1 GetMax(T1 a,T2 b)
+//{
+//	if(a>b)
+//		return a;
+//	else 
+//		return b;
+//}
+//template <typename A1,typename A2>
+//A1 GetMin(A1 a1,A2 a2)
+//{
+//	if(a1<a2)
+//		return a1;
+//	else
+//		return a2;
+//}
+//Exercise 1.b
+//int main () 
+//{
+//  int i=5, j=6, k;
+//  long l=10, m=5, n;
+//  k=GetMax<int>(i,j);
+//  n=GetMin<long>(l,m);
+//  cout << k << endl;
+//  cout << n << endl;
+//}
+//Exercise 1.c
+//int main () 
+//{
+//  int i=5, j=6, k;
+//  long l=10, m=5, n;
+//  k=GetMax(i,j);
+//  n=GetMin(l,m);
+//  cout << k << endl;
+//  cout << n << endl;
+//}
+template<typename T>
+class hello
+{
+private:
+	T values[2];
+public:
+	hello(T a,T b)
+	{
+		values[0]=a;
+		values[1]=b;
+	}
+	T getmax(T a,T b)
+	{
+		if(a>b)
+			return a;
+		else 
+			return b;
+	}
+	friend ostream& operator<<(ostream &out,const hello<T>& a)
+	{
+		out<<endl;
+		out<<a.values[0]<<endl;
+		out<<a.values[1]<<endl;
+		return out;
+	}
+	T getmin(T a,T b);
+};
+
+template <typename T> //declare a template parameter before implementation
+T hello< T >::getmin(T a,T b)
+{
+	if(a<b)
+		return a;
+	else 
+		return b;
+}
+
+ 
+
+int main () 
+{
+	hello<double>myobject(1.012,1.01234);
+	cout<<myobject.getmax(1.012,1.01234)<<endl;
+	cout<<myobject.getmin(1.012,1.01234)<<endl;
+	cout<<myobject<<endl; // << operator in pairs should be overloaded (inline)
+	system("pause");
+}
+
+//Exercise 1.d
+//int main () 
+//{
+//  char i='Z';
+//  int  j=6, k;
+//  long l=10, m=5, n;
+//  k=GetMax<int,long>(i,m);
+//  n=GetMin<int,char>(j,l);
+//  cout << k << endl;
+//  cout << n << endl;
+//  system("pause");
+//}
+//Exercise 1.e
+//int main()
+//{
+//  char i='Z';
+//  int  j=6, k;
+//  long l=10, m=5, n;
+//  k=GetMax(i,m);
+//  n=GetMin(j,l);
+//  cout << k << endl;
+//  cout << n << endl;
+//  system("pause");
+//}
